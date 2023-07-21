@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="head :: frag_body"></div>
+	<h1>魔法少女育成計画</h1>
+		<button onclick="location.href='/mahoiku/dataInsert'" >稼働データ登録</button>
+		<button onclick="location.href='/mahoiku/dataDisplay'" >稼働データ表示</button>
+		<button onclick="location.href='/top'" >キャンセル</button>
+		
+	
+	
+</body>
+</html>

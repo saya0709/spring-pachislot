@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="head :: frag_body"></div>
+
+	<div th:object="${mahoikuSelect}">
+		<h1>魔法少女育成計画 データ表示</h1>
+		
+		
+		<button onclick="location.href='/mahoiku/dataDisplay'" >戻る</button>
+		
+		<h2>通常時関連</h2>
+		<label>稼働日：[[*{year}]]-[[*{month}]]-[[*{day}]]</label>
+		<br>
+		<label>枠色：[[*{frame}]]</label>
+		<br>
+		
+		<label>総ゲーム数：[[*{totalGameNum}]]</label>
+		<br>
+		<label>通常ゲーム数：[[*{gameNum}]]</label>
+		<br>
+		<label>ARTゲーム数：[[*{artGameNum}]]</label>
+		<br>
+		<label>同色BIG回数：[[*{SBIG}]]</label>
+		<br>
+		<label>異色BIG回数：[[*{BIG}]]</label>
+		<br>
+		<label>REG回数：[[*{REG}]]</label>
+		<br>
+		<label>まほいくとらいある回数：[[*{trial}]]</label>
+		<br>
+		<label>まほいくとらいある成功：[[*{trialSuccess}]]</label>
+		<br>
+		<label>EPISODE回数：[[*{episode}]]</label>
+		<br>
+		<label>戦闘狂BATTLE回数：[[*{battle}]]</label>
+		<br>
+		<label>SUPPER戦闘狂BATTLE回数：[[*{superBattle}]]</label>
+		<br>
+		<label>SUVIVAL RACE回数：[[*{survival}]]</label>
+		<br>
+		<label>RAGING ZONE回数：[[*{raging}]]</label>
+		<br>
+		
+		
+		
+		
+		<h2>ビタ押し関連</h2>
+		<label>ARTビタ回数：[[*{bita}]]</label>
+		<br>
+		<label>ARTビタ成功回数：[[*{bitaSuccess}]]</label>
+		<br>
+		<label>ART救済回数：[[*{relief}]]</label>
+		<br>
+		<label>BIG中ビタ回数：[[*{bigBita}]]</label>
+		<br>
+		<label>BIG中ビタ成功回数：[[*{bigBitaSuccessNum}]]</label>
+		<br>
+		<label>BIG中救済回数：[[*{bigRelief}]]</label>
+		<br>
+		
+		
+		<!--  
+		-->
+			
+		<h2>ビタ押し詳細</h2>
+		
+		
+		
+	</div>
+	
+	
+	<div th:object="${mahoikuSelectProbability}">
+		<label>同色BIG確率：1/[[*{SBIG}]]</label>
+		<br>
+		<label>異色BIG確率：1/[[*{BIG}]]</label>
+		<br>
+		<label>BIG確率：1/[[*{BigProbability}]]</label>
+		<br>
+		<label>REG確率：1/[[*{REG}]]</label>
+		<br>
+		<label>ボーナス確率：1/[[*{BonusProbability}]]</label>
+		<br>
+		
+		
+		<label>まほいくとらいある：1/[[*{trial}]]</label>
+		<br>
+		<label>まほいくとらいある成功：[[*{trialSuccess}]]%</label>
+		<br>
+		<label>EPISODE：1/[[*{episode}]]</label>
+		<br>
+		<label>戦闘狂BATTLE：1/[[*{battle}]]</label>
+		<br>
+		<label>SUPPER戦闘狂BATTLE：1/[[*{superBattle}]]</label>
+		<br>
+		<label>SURVIVAL RACE：1/[[*{survival}]]</label>
+		<br>
+		<label>RAGING ZONE：1/[[*{raging}]]</label>
+		<br>
+		
+		<h2>ビタ押し関連</h2>
+		<label>ARTビタ成功率：[[*{bitaSuccess}]]%</label>
+		<br>
+		<label>ART救済確率：[[*{relief}]]%</label>
+		<br>
+		<label>BIG中ビタ成功率：[[*{bigBitaSuccess}]]%</label>
+		<br>
+		<label>BIG中救済確率：[[*{bigRelief}]]%</label>
+		<br>
+		<label>ビタ成功率：[[*{totalBitaSuccess}]]%</label>
+		<br>
+		
+		
+		
+		
+		
+	</div>
+	
+	 <button onclick="location.href='/mahoiku/dataDisplay'" >戻る</button>
+		
+        
+	
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="head :: frag_body"></div>
+	<h1>まほいく</h1>
+
+	
+	
+	
+
+	<button onclick="location.href='/mahoiku/csv'">CSVからのデータ登録はこちら</button>
+
+	
+	
+	
+	
+
+	<h1>まほいく稼働結果入力フォーム</h1>
+	
+	
+	<div th:if="${validationError}" th:each="error : ${validationError}">
+		<label class="text-danger" th:text="${error}"></label>
+	</div>
+	<div th:if="${validationError2}">
+		<label class="text-danger" th:text="${validationError2}"></label>
+	</div>
+	
+
+
+
+	<form th:action="@{/mahoiku/create}" th:object="${mahoikuRequest}"
+		th:method="post">
+		<h2>通常時・BIG中データ</h2>
+		<div class="form-group">
+			<label>稼働日：</label> <input type="text" th:field="*{date}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<select name="selectedChoice">
+				<option th:each="choice : ${choices}" th:value="${choice}"
+					th:text="${choice}"></option>
+			</select>
+		</div>
+
+
+
+
+
+
+		<h2>通常時データ</h2>
+		<div class="form-group">
+			<label>ゲーム数：</label> <input type="text" th:field="*{TotalGameNum}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>通常時ゲーム数：</label> <input type="text" th:field="*{gameNum}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>ARTゲーム数：</label> <input type="text" th:field="*{artGameNum}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>同色BIG回数：</label> <input type="text" th:field="*{SBIG}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>異色BIG回数：</label> <input type="text" th:field="*{BIG}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>REG回数：</label> <input type="text" th:field="*{REG}"
+				class="form-control">
+		</div>
+
+		<div class="form-group">
+			<label>まほいくとらいある：</label> <input type="text" th:field="*{trial}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>まほいくとらいある成功：</label> <input type="text"
+				th:field="*{trialSuccess}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>EPISODE：</label> <input type="text" th:field="*{episode}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>戦闘狂BATTLE：</label> <input type="text" th:field="*{battle}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>SUPER戦闘狂BATTLE：</label> <input type="text"
+				th:field="*{superBattle}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>SURVIVAL RACE：</label> <input type="text"
+				th:field="*{survival}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>RAGING ZONE：</label> <input type="text" th:field="*{raging}"
+				class="form-control">
+		</div>
+
+
+
+
+
+		<h2>ビタ詳細</h2>
+		<div class="form-group">
+			<label>ARTビタ：</label> <input type="text" th:field="*{bita}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>ARTビタ成功回数：</label> <input type="text"
+				th:field="*{bitaSuccess}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>ARTビタ救済回数：</label> <input type="text" th:field="*{relief}"
+				class="form-control">
+		</div>
+
+
+		<div class="form-group">
+			<label>BIG中ビタ：</label> <input type="text" th:field="*{bigBita}"
+				class="form-control">
+		</div>
+		<div class="form-group">
+			<label>BIG中ビタ成功回数：</label> <input type="text"
+				th:field="*{bigBitaSuccess}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>BIG中ビタ救済回数：</label> <input type="text" th:field="*{bigRelief}"
+				class="form-control">
+		</div>
+
+
+
+		<br>
+
+
+
+
+		<div class="text-center">
+			<a href="/mahoiku/dataInsert" class="btn btn-secondary">キャンセル</a> <input
+				type="submit" value="　登録　" class="btn btn-primary">
+
+		</div>
+
+
+
+	</form>
+	<button onclick="location.href='/mahoiku'">戻る</button>
+
+
+
+
+
+</body>
+</html>

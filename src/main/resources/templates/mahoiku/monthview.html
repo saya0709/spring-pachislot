@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="head :: frag_body"></div>
+	<div th:object="${mahoikuMonthDate}">
+	
+		<h1>魔法少女育成計画 月データ表示</h1>
+		
+		
+		<button onclick="location.href='/mahoiku/dataDisplay'" >戻る</button>
+		
+		
+		<h2>通常時関連</h2>
+		<label>総ゲーム数：[[*{totalGameNum}]]</label>
+		<br>
+		<label>通常ゲーム数：[[*{gameNum}]]</label>
+		<br>
+		<label>ARTゲーム数：[[*{artGameNum}]]</label>
+		<br>
+		<label>同色BIG回数：[[*{SBIG}]]</label>
+		<br>
+		<label>異色BIG回数：[[*{BIG}]]</label>
+		<br>
+		<label>REG回数：[[*{REG}]]</label>
+		<br>
+		<label>まほいくとらいある回数：[[*{trial}]]</label>
+		<br>
+		<label>まほいくとらいある成功：[[*{trialSuccess}]]</label>
+		<br>
+		<label>EPISODE回数：[[*{episode}]]</label>
+		<br>
+		<label>戦闘狂BATTLE回数：[[*{battle}]]</label>
+		<br>
+		<label>SUPPER戦闘狂BATTLE回数：[[*{superBattle}]]</label>
+		<br>
+		<label>SUVIVAL RACE回数：[[*{survival}]]</label>
+		<br>
+		<label>RAGING ZONE回数：[[*{raging}]]</label>
+		<br>
+		
+		
+		
+		
+		<h2>ビタ押し関連</h2>
+		<label>ARTビタ回数：[[*{bita}]]</label>
+		<br>
+		<label>ARTビタ成功回数：[[*{bitaSuccess}]]</label>
+		<br>
+		<label>ART救済回数：[[*{relief}]]</label>
+		<br>
+		<label>BIG中ビタ回数：[[*{bigBita}]]</label>
+		<br>
+		<label>BIG中ビタ成功回数：[[*{bigBitaSuccessNum}]]</label>
+		<br>
+		<label>BIG中救済回数：[[*{bigRelief}]]</label>
+		<br>
+		
+		
+		
+		
+		
+		
+	
+	</div>
+	
+</body>
+</html>

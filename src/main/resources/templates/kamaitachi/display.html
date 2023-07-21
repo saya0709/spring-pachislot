@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="head :: frag_body"></div>
+	<h1>かまいたちの夜　データ表示</h1>
+	
+	
+	<div class="container">
+		<h2>稼働日データ表示</h2>
+		
+        <form th:action="@{/kamaitachi/dayError}" method="post" th:object="${kamaitachiDate}">
+        <select id="selectedId" name="selectedId">
+            <option value="00"></option>
+            <option
+                th:each="kamaitachiDate : ${kamaitachiDate}"
+                th:value="${kamaitachiDate.kamaitachi_id}"                 
+                th:text="|${kamaitachiDate.year}-${kamaitachiDate.month}-${kamaitachiDate.day}|"
+                th:selected="${kamaitachiDate.kamaitachi_id} == selectedId" 
+             >
+            </option>
+        </select>
+        <button type="submit">送信</button>
+        <div th:if="${dayValidation}" th:each="error : ${dayValidation}">
+		<label class="text-danger" th:text="${error}"></label>
+		</div>
+        
+        </form>
+        
+        
+        <h2>稼働日データ削除</h2>
+		
+        <form th:action="@{/kamaitachi/deleteError}" method="post" th:object="${kamaitachiDate}">
+        <select id="selectedId" name="selectedId">
+            <option value="00"></option>
+            <option
+                th:each="kamaitachiDate : ${kamaitachiDate}"
+                th:value="${kamaitachiDate.kamaitachi_id}"                 
+                th:text="|${kamaitachiDate.year}-${kamaitachiDate.month}-${kamaitachiDate.day}|"
+                th:selected="${kamaitachiDate.kamaitachi_id} == selectedId" 
+             >
+            </option>
+        </select>
+        <button type="submit">送信</button>
+        <div th:if="${daleteDayValidation}" th:each="error : ${daleteDayValidation}">
+		<label class="text-danger" th:text="${error}"></label>
+		</div>
+        
+        </form>
+        
+        
+        
+        
+         
+        
+        <h2>稼働月データ表示</h2>
+        
+        <form th:action="@{/kamaitachi/monthError}" method="post" th:object="${kamaitachiYearMonthSelect}">
+        <select id="selectedId" name="selectedId">
+            <option value="00"></option>
+            <option
+                th:each="kamaitachiDate : ${kamaitachiYearMonthSelect}"
+                th:value="${kamaitachiDate}"  
+                th:text="${kamaitachiDate}"
+                th:selected="${kamaitachiDate} == selectedId"              
+             >
+            </option>
+        </select>
+        <button type="submit">送信</button>
+        <div th:if="${monthValidation}" th:each="error : ${monthValidation}">
+		<label class="text-danger" th:text="${error}"></label>
+		</div>
+        
+        
+        
+        </form>
+
+
+        <h2>全稼働データ表示</h2>
+       
+        <button onclick="location.href='/kamaitachi/allData'">表示</button>
+       
+        
+        <br>
+       
+
+
+        
+        <br>
+        <button onclick="location.href='/kamaitachi'" >戻る</button>
+		
+		
+        
+        
+
+        
+        
+        <!-- 
+        
+        <div th:if="selectedId">
+        	<div class="form-group">
+				<label><span class="">メールアドレス</span>：</label> 
+				<input type="text" th:field="*{mail}" class="form-control">※
+			</div>
+        
+        
+        </div>
+         -->
+        
+        <!--  
+        
+        <div th:object="${kamaitachiData}">
+        	<div class="row mx-md-n5">
+				<div class="col-2 pt-3 border bg-light">ゲーム数</div>
+				<div class="col pt-3 border">
+					<p th:text="*{selectedValue.gameNum}"></p>
+				</div>
+			</div>
+        
+        
+        
+        </div>
+        
+        -->
+        
+        
+        
+        
+    </div>
+
+</body>
+</html>

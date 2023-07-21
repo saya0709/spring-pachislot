@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+
+p{
+color: red;
+}
+
+
+.btn_1 {
+color: red;
+  width: 200px;
+  margin-right; 100px;
+  padding-right; 100px;
+}
+
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="head :: frag_body"></div>
+	<div th:object="${kamaitachiAllData}">
+		<h1>かまいたちの夜 全データ表示</h1>
+		
+		
+		<button onclick="location.href='/kamaitachi/dataDisplay'" >戻る</button>
+		
+		
+		
+		
+		<h2>通常時関連</h2>
+		
+		<label>ゲーム数：[[*{gameNum}]]</label>
+		<br>
+		<label>かまいたちボーナス回数：[[*{SBIG}]]</label>
+		<br>
+		<label>BIGボーナス回数：[[*{BIG}]]</label>
+		<br>
+		<label>REGボーナス回数：[[*{REG}]]</label>
+		<br>
+		<label>🔔出現回数：[[*{beru}]]</label>
+		<br>
+		<label>🍉出現回数：[[*{suika}]]</label>
+		<br>
+		<label>🍒出現回数：[[*{cherry}]]</label>
+		<br>
+		<label>一枚役A出現回数：[[*{ichimaiyakuA}]]</label>
+		<br>
+		<label>一枚役BC出現回数：[[*{ichimaiyakuBC}]]</label>
+		<br>
+		<label>偶数示唆回数：[[*{even}]]</label>
+		<br>
+		<label>奇数示唆回数：[[*{odd}]]</label>
+		<br>
+		<label>BIG中一枚絵シルエット回数：[[*{silhouette}]]</label>
+		<br>
+		<label>BIG中一枚絵ノーマル回数：[[*{nomal}]]</label>
+		<br>
+		
+		
+		<h2>ビタ押し関連</h2>
+		<label>RTビタ成功回数：[[*{bitaSuccessNum}]]</label>
+		<br>
+		<label>RTビタ失敗回数：[[*{bitaFailureNum}]]</label>
+		<br>
+		<label>転落ビタ成功回数：[[*{tenrakuBitaSuccessNum}]]</label>
+		<br>
+		<label>転落ビタ失敗回数：[[*{tenrakuBitaFailureNum}]]</label>
+		<br>
+		<label>RT突入成功回数：[[*{rtNum}]]</label>
+		<br>
+		
+		
+		
+		 
+		
+			
+		
+		
+	</div>
+	
+	<!--
+	
+	
+	<h2>通常時確率</h2>
+	
+	<div th:object="${kamaitachiAllDataProbability}">
+		<label>かまいたちボーナス確率：1/[[*{SBIG}]]</label>
+		<br>
+		<label>BIGボーナス確率：1/[[*{BIG}]]</label>
+		<br>
+		<label>REGボーナス確率：1/[[*{REG}]]</label>
+		<br>
+		<label>🔔出現率：1/[[*{beru}]]</label>
+		<br>
+		<label>🍉出現率：1/[[*{suika}]]</label>
+		<br>
+		<label>🍒出現率：1/[[*{cherry}]]</label>
+		<br>
+		<label>一枚役A出現率：1/[[*{ichimaiyakuA}]]</label>
+		<br>
+		<label>一枚役BC出現率：1/[[*{ichimaiyakuBC}]]</label>
+		<br>
+		<label>偶数示唆：奇数示唆　＝　[[*{even}]]%：[[*{odd}]]%</label>
+		<br>
+		<label>BIG中一枚絵シルエット：ノーマル　＝　[[*{silhouette}]]%：[[*{nomal}]]%</label>
+		<br>
+		
+		
+		
+		<h2>ビタ押し関連</h2>
+		<label>RTビタ成功率：[[*{bitaSuccess}]]%</label>
+		<br>
+		<label>転落ビタ成功率：[[*{tenrakuBitaSuccess}]]%</label>
+		<br>
+		<label>ビタ成功率：[[*{totalBitaSuccess}]]%</label>
+		<br>
+		<label>RT突入率：[[*{rtNum}]]%</label>
+		<br>
+	
+	</div>
+	
+	-->
+	
+	
+	
+</body>
+</html>

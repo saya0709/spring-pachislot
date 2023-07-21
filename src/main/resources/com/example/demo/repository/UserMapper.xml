@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.UserMapper">
+	
+	
+	
+	
+	<resultMap id="KamaitachiMap" type="com.example.demo.entity.Kamaitachi">
+		<result column="kamaitachi_id" jdbcType="INTEGER" property="kamaitachi_id" />
+		<result column="year" jdbcType="VARCHAR" property="year" />
+		<result column="month" jdbcType="VARCHAR" property="month" />
+		<result column="day" jdbcType="VARCHAR" property="day" />
+		<result column="gamenum" jdbcType="INTEGER" property="gameNum" />
+		<result column="sbig" jdbcType="INTEGER" property="SBIG" />
+		<result column="big" jdbcType="INTEGER" property="BIG" />
+		<result column="reg" jdbcType="INTEGER" property="REG" />
+		<result column="beru" jdbcType="INTEGER" property="beru" />
+		<result column="suika" jdbcType="INTEGER" property="suika" />
+		<result column="cherry" jdbcType="INTEGER" property="cherry" />
+		<result column="ichimaiyakua" jdbcType="INTEGER" property="ichimaiyakuA" />
+		<result column="ichimaiyakubc" jdbcType="INTEGER" property="ichimaiyakuBC" />
+		<result column="even" jdbcType="INTEGER" property="even" />
+		<result column="odd" jdbcType="INTEGER" property="odd" />
+		<result column="silhouette" jdbcType="INTEGER" property="silhouette" />
+		<result column="nomal" jdbcType="INTEGER" property="nomal" />
+		<result column="bitasuccessnum" jdbcType="INTEGER" property="bitaSuccessNum" />
+		<result column="bitafailurenum" jdbcType="INTEGER" property="bitaFailureNum" />
+		<result column="tenrakubitasuccessnum" jdbcType="INTEGER" property="tenrakuBitaSuccessNum" />
+		<result column="tenrakubitafailurenum" jdbcType="INTEGER" property="tenrakuBitaFailureNum" />
+		<result column="rtnum" jdbcType="INTEGER" property="rtNum" />
+	</resultMap>
+	
+	
+	
+	<resultMap id="KamaitachiYearMonthMap" type="com.example.demo.entity.KamaitachiYearMonth">
+		<result column="year" jdbcType="VARCHAR" property="year" />
+		<result column="month" jdbcType="VARCHAR" property="month" />
+	</resultMap>
+	
+	 
+	
+	<resultMap id="KamaitachiMonthDataMap" type="com.example.demo.entity.KamaitachiMonthData">
+		<result column="gamenum" jdbcType="INTEGER" property="gameNum" />
+		<result column="sbig" jdbcType="INTEGER" property="SBIG" />
+		<result column="big" jdbcType="INTEGER" property="BIG" />
+		<result column="reg" jdbcType="INTEGER" property="REG" />
+		<result column="beru" jdbcType="INTEGER" property="beru" />
+		<result column="suika" jdbcType="INTEGER" property="suika" />
+		<result column="cherry" jdbcType="INTEGER" property="cherry" />
+		<result column="ichimaiyakua" jdbcType="INTEGER" property="ichimaiyakuA" />
+		<result column="ichimaiyakubc" jdbcType="INTEGER" property="ichimaiyakuBC" />
+		<result column="even" jdbcType="INTEGER" property="even" />
+		<result column="odd" jdbcType="INTEGER" property="odd" />
+		<result column="silhouette" jdbcType="INTEGER" property="silhouette" />
+		<result column="nomal" jdbcType="INTEGER" property="nomal" />
+		<result column="bitasuccessnum" jdbcType="INTEGER" property="bitaSuccessNum" />
+		<result column="bitafailurenum" jdbcType="INTEGER" property="bitaFailureNum" />
+		<result column="tenrakubitasuccessnum" jdbcType="INTEGER" property="tenrakuBitaSuccessNum" />
+		<result column="tenrakubitafailurenum" jdbcType="INTEGER" property="tenrakuBitaFailureNum" />
+		<result column="rtnum" jdbcType="INTEGER" property="rtNum" />
+	</resultMap>
+	
+	
+	
+	
+	
+	 
+	 
+	<!-- 新規登録 -->
+	<insert id="kamaitachiInsert">
+		INSERT INTO kamaitachi
+		( year, month, day, gameNum, SBIG, BIG, REG, beru, suika, cherry, ichimaiyakuA, ichimaiyakuBC, even, odd, silhouette, nomal, bitaSuccessNum, bitaFailureNum, tenrakuBitaSuccessNum, tenrakuBitaFailureNum, rtNum) values
+		(#{year},#{month},#{day},#{gameNum},#{SBIG},#{BIG},#{REG},#{beru},#{suika},#{cherry},#{ichimaiyakuA},#{ichimaiyakuBC},#{even},#{odd},#{silhouette},#{nomal},#{bitaSuccessNum},#{bitaFailureNum},#{tenrakuBitaSuccessNum},#{tenrakuBitaFailureNum}, #{rtNum})
+	</insert>
+	
+	
+	<!-- 全取得	 -->
+	<select id="kamaitachiDateSelect" resultMap="KamaitachiMap">
+		SELECT * FROM kamaitachi
+	</select>
+
+	
+	
+	
+	<!-- 全取得
+	<select id="kamaitachiDateSelect" resultType="com.example.demo.entity.Kamaitachi">
+		SELECT 
+		kamaitachi_id,
+		year,
+		month,
+		day,
+		gamenum as gameNum,
+		sbig as SBIG,
+		big as BIG,
+		reg as REG,
+		beru,
+		suika,
+		cherry,
+		ichimaiyakua as ichimaiyakuA,
+		ichimaiyakubc as ichimaiyakuBC,
+		even,
+		odd,
+		silhouette,
+		nomal,
+		bitasuccessnum as bitaSuccessNum,
+		bitafailurenum as bitaFailureNum,
+		tenrakubitasuccessnum as tenrakuBitaSuccessNum,
+		tenrakubitafailurenum as tenrakuBitaFailureNum,
+		rtnum as rtNum
+		
+		FROM kamaitachi
+	</select>
+	-->
+
+
+
+	
+	
+	<!-- 年月取得 -->
+	<select id="kamaitachiYearMonthSelect" resultMap="KamaitachiYearMonthMap">
+		SELECT year, month FROM kamaitachi GROUP BY year, month
+	</select>
+	
+	
+	<!-- 日データ取得 -->
+	<select id="kamaitachiSelectAll" resultMap="KamaitachiMap">
+		SELECT * FROM kamaitachi WHERE kamaitachi_id = #{kamaitachi_id}
+	</select>
+	
+	
+	
+	<!-- 一致・確認 -->
+	<select id="kamaitachiInsertCheck" resultType="Integer">
+		SELECT count(*) FROM kamaitachi 
+		WHERE year = #{year} and month = #{month} and day = #{day} and gamenum = #{gameNum} and sbig = #{SBIG}
+		 and big = #{BIG} and reg = #{REG} and beru = #{beru} and suika = #{suika} and cherry = #{cherry}
+		 and ichimaiyakua = #{ichimaiyakuA} and ichimaiyakubc = #{ichimaiyakuBC} and even = #{even} and odd = #{odd} and silhouette = #{silhouette} and nomal = #{nomal}
+		 and bitasuccessnum = #{bitaSuccessNum} and bitafailurenum = #{bitaFailureNum} and tenrakubitasuccessnum = #{tenrakuBitaSuccessNum} and tenrakubitafailurenum = #{tenrakuBitaFailureNum} and rtnum = #{rtNum} 
+			
+	</select>
+	
+	
+	<!-- 稼働データ削除 -->
+	<delete id="kamaitachiDataDelete">
+		delete from kamaitachi where kamaitachi_id = #{kamaitachi_id}
+	
+	</delete>
+	
+	
+	<!-- 月データ取得 -->
+	<select id="kamaitachiMonthDataSelect" resultMap="KamaitachiMap">
+		SELECT SUM(gameNum) as gamenum, SUM(SBIG) as sbig, SUM(BIG) as big, SUM(REG) as reg, SUM(beru) as beru, SUM(suika) as suika, SUM(cherry) as cherry, SUM(ichimaiyakuA) as ichimaiyakuA, SUM(ichimaiyakuBC) ichimaiyakuBC, SUM(even) as even, SUM(odd) as odd, SUM(silhouette) as silhouette, SUM(nomal) as nomal, SUM(bitaSuccessNum) as bitasuccessnum, SUM(bitaFailureNum) as bitafailurenum, SUM(tenrakuBitaSuccessNum) as tenrakubitasuccessnum, SUM(tenrakuBitaFailureNum) as tenrakubitafailurenum, SUM(rtNum) as rtnum
+		FROM kamaitachi 
+		WHERE  year = #{param1} AND month = #{param2}
+	</select>
+	
+	
+	<!-- 全データ取得 -->
+	<select id="kamaitachiAllDataSelect" resultMap="KamaitachiMap">
+		SELECT SUM(gameNum) as gamenum, SUM(SBIG) as sbig, SUM(BIG) as big, SUM(REG) as reg, SUM(beru) as beru, SUM(suika) as suika, SUM(cherry) as cherry, SUM(ichimaiyakuA) as ichimaiyakuA, SUM(ichimaiyakuBC) ichimaiyakuBC, SUM(even) as even, SUM(odd) as odd, SUM(silhouette) as silhouette, SUM(nomal) as nomal, SUM(bitaSuccessNum) as bitasuccessnum, SUM(bitaFailureNum) as bitafailurenum, SUM(tenrakuBitaSuccessNum) as tenrakubitasuccessnum, SUM(tenrakuBitaFailureNum) as tenrakubitafailurenum, SUM(rtNum) as rtnum
+		FROM kamaitachi 
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
+

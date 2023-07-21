@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+>
+<!-- Bootstrap CSS -->
+
+<meta charset="UTF-8">
+<title>PachiSlot</title>
+</head>
+<body>
+	<div th:include="head :: frag_body"></div>
+	<h1>PachiSlot</h1>
+	<a th:href="@{/kamaitachi}">かまいたちの夜</a>
+	<a th:href="@{/mahoiku}">魔法少女育成計画</a>
+	<a th:href="@{/qa}">Q&A</a>
+
+
+
+	<div class="container">
+		<!-- 
+		<h1 class="title-mg">Ｑ&amp;Ａ</h1>
+		<div class="accordion" id="accordionPanelsStayOpenExample">
+		 -->
+
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+				<button class="accordion-button" type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+					aria-controls="panelsStayOpen-collapseOne">かまいたちの夜</button>
+			</h2>
+			<div id="panelsStayOpen-collapseOne"
+				class="accordion-collapse collapse show"
+				aria-labelledby="panelsStayOpen-headingOne">
+				<div class="accordion-body">
+					<a th:href="@{/kamaitachi/dataInsert}">データ登録</a> <br> <a
+						th:href="@{/kamaitachi/csv}">データ登録(CSV)</a> <br> <a
+						th:href="@{/kamaitachi/dataDisplay}">データ表示</a>
+
+
+					<!-- 				
+						<strong>Ａ：ご注文後10秒以内に当店へお電話いただき、運よく繋がりましたらキャンセル可能です。</strong> <br>※何らかの事情で繋がらず、10秒を過ぎちゃったらキャンセルはお承りできかねますねぇ。予めご了承下さい。
+						 -->
+				</div>
+			</div>
+			<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+				<button class="accordion-button" type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+					aria-controls="panelsStayOpen-collapseTwo">魔法少女育成計画</button>
+			</h2>
+			<div id="panelsStayOpen-collapseTwo"
+				class="accordion-collapse collapse show"
+				aria-labelledby="panelsStayOpen-headingTwo">
+				<div class="accordion-body">
+					<a th:href="@{/mahoiku/dataInsert}">データ登録</a> <br> <a
+						th:href="@{/mahoiku/csv}">データ登録(CSV)</a> <br> <a
+						th:href="@{/mahoiku/dataDisplay}">データ表示</a>
+
+
+					<!-- 				
+						<strong>Ａ：ご注文後10秒以内に当店へお電話いただき、運よく繋がりましたらキャンセル可能です。</strong> <br>※何らかの事情で繋がらず、10秒を過ぎちゃったらキャンセルはお承りできかねますねぇ。予めご了承下さい。
+						 -->
+				</div>
+			</div>
+		</div>
+
+
+
+		<table>
+			<tr>
+				<td><a th:href="@{/kamaitachi}"><img
+						th:src="@{/image/kamaitachi.png}" width="300"
+						height="300"><br>かまいたちの夜<br></a>
+				<td><a th:href="@{/mahoiku}"><img
+						th:src="@{/image/mahoiku.jpg}" width="300"
+						height="300"><br> 魔法少女育成計画 <br></a>
+				<td><a th:href="@{/mahoiku}"><img
+						th:src="@{/image/higurashi.jpg}" width="300"
+						height="300"><br> ひぐらしのなく頃に <br></a>
+			
+		</table>
+
+
+
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{/css/kamaitachi.css}" rel="stylesheet" type="text/css">
+
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+	<div th:include="head :: frag_body"></div>
+	
+	<!--
+	-->
+	
+	<div th:if="${validationError}" th:each="error : ${validationError}">
+		<label class="text-danger" th:text="${error}"></label>
+	</div>
+	<div th:if="${errorMessage}">
+		<label class="text-danger" th:text="${errorMessage}"></label>
+	</div>
+	
+	
+	
+		
+	<h1>CSV</h1>
+	<!--
+	<form action="/kamaitachi/csvAdd" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput">
+        
+        
+    </form>
+	
+	
+	
+	<form th:action="@{/kamaitachi/csvAdd}" th:object="${kamaitachiCsv}" th:method="post">
+      <div  class="form-group">
+        <label>ファイル名：</label>
+        <input  type="text" id="fileNameDisplay"  th:field="*{date}"  class="form-control">
+      </div>
+      
+      <br>
+      
+      
+      <div   class="text-center">
+        <a href="/kamaitachi/csv" class="btn btn-secondary">キャンセル</a>
+        <input    type="submit" value="　登録　" class="btn btn-primary">
+        
+      </div>
+      
+	</form>
+	
+	-->
+	
+	
+
+	<form th:action="@{/kamaitachi/csvAdd}" th:object="${kamaitachiCsv}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput">
+        
+	  <div  class="form-group">
+        <label>ファイル名：</label>
+        <input  type="text" id="fileNameDisplay"  th:field="*{date}"  class="form-control">
+      </div>
+      
+      <br>
+      
+      
+      <div   class="text-center">
+        <a href="/kamaitachi/csv" class="btn btn-secondary">キャンセル</a>
+        <input    type="submit" value="　登録　" class="btn btn-primary">
+        
+      </div>
+      
+	</form>
+	
+	
+	
+	
+	
+	
+	<br>
+	<div >
+	<button onclick="location.href='/kamaitachi/dataInsert'"  class="btn_1">データ入力画面に戻る</button>
+    <button onclick="location.href='/kamaitachi'" class="btn_1">かまいたちの夜TOPに戻る</button>
+    <button onclick="location.href='/top'" class="btn_1">TOPに戻る</button>
+    </div>
+	
+</body>
+</html>
+
+
+<script>
+    document.getElementById("fileInput").addEventListener("change", function() {
+        var fileName = this.value.split("\\").pop();
+        document.getElementById("fileNameDisplay").value = fileName;
+    });
+</script>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:include="head :: frag_body"></div>
+	<div th:if="${validationError}" th:each="error : ${validationError}">
+		<label class="text-danger" th:text="${error}"></label>
+	</div>
+	<div th:if="${validationError2}">
+		<label class="text-danger" th:text="${validationError2}"></label>
+	</div>
+	
+	
+	
+	<button onclick="location.href='/kamaitachi/csv'" >CSVからのデータ登録はこちら</button>
+	
+	
+	
+	<h1>かまいたちの夜稼働結果入力フォーム</h1>
+	
+	
+	
+	<form th:action="@{/kamaitachi/dataInsert}" th:object="${kamaitachiRequest}" th:method="post">
+      <h2>通常時・BIG中データ</h2>
+      
+      
+      
+      
+      
+      <div class="form-group">
+        <label>稼働日：</label>
+        <input type="text" th:field="*{date}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>ゲーム数：</label>
+        <input type="text" th:field="*{gameNum}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>かまいたちボーナス回数：</label>
+        <input type="text" th:field="*{SBIG}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>BIGボーナス回数：</label>
+        <input type="text" th:field="*{BIG}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>REGボーナス回数：</label>
+        <input type="text" th:field="*{REG}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>🔔出現回数：</label>
+        <input type="text" th:field="*{beru}" class="form-control">
+      </div> <div class="form-group">
+        <label>🍉出現回数：</label>
+        <input type="text" th:field="*{suika}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>🍒出現回数：</label>
+        <input type="text" th:field="*{cherry}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>一枚役A出現回数：</label>
+        <input type="text" th:field="*{ichimaiyakuA}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>一枚役BorC出現回数：</label>
+        <input type="text" th:field="*{ichimaiyakuBC}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>偶数示唆回数：</label>
+        <input type="text" th:field="*{even}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>奇数示唆回数：</label>
+        <input type="text" th:field="*{odd}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>BIG中一枚絵シルエット回数：</label>
+        <input type="text" th:field="*{silhouette}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>BIG中一枚絵ノーマル回数：</label>
+        <input type="text" th:field="*{nomal}" class="form-control">
+      </div>
+      
+      
+      <h2>ビタ押し関連</h2>
+       <div class="form-group">
+        <label>RTビタ成功回数：</label>
+        <input type="text" th:field="*{bitaSuccessNum}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>RTビタ失敗回数：</label>
+        <input type="text" th:field="*{bitaFailureNum}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>転落ビタ成功回数：</label>
+        <input type="text" th:field="*{tenrakuBitaSuccessNum}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label>転落ビタ失敗回数：</label>
+        <input type="text" th:field="*{tenrakuBitaFailureNum}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>RT突入成功回数：</label>
+        <input type="text" th:field="*{rtNum}" class="form-control">
+      </div>
+      
+      <br>
+      
+      
+       
+      
+      <div class="text-center">
+        <a href="/kamaitachi/dataInsert" class="btn btn-secondary">キャンセル</a>
+        <input type="submit" value="　登録　" class="btn btn-primary">
+        
+      </div>
+      
+      
+      
+	</form>
+	<button onclick="location.href='/kamaitachi'" >戻る</button>
+      
+	
+	
+	
+</body>
+</html>

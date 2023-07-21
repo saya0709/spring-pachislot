@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.MahoikuMapper">
+
+
+
+
+	<resultMap id="MahoikuMap"
+		type="com.example.demo.entity.Mahoiku">
+		<result column="mahoiku_id" jdbcType="INTEGER"	property="mahoiku_id" />
+		<result column="year" jdbcType="VARCHAR" property="year" />
+		<result column="month" jdbcType="VARCHAR" property="month" />
+		<result column="day" jdbcType="VARCHAR" property="day" />
+		<result column="frame" jdbcType="VARCHAR" property="frame" />
+		
+		<result column="totalgamenum" jdbcType="INTEGER" property="totalGameNum" />
+		<result column="gamenum" jdbcType="INTEGER" property="gameNum" />
+		<result column="artgamenum" jdbcType="INTEGER" property="artGameNum" />
+		<result column="sbig" jdbcType="INTEGER" property="SBIG" />
+		<result column="big" jdbcType="INTEGER" property="BIG" />
+		<result column="reg" jdbcType="INTEGER" property="REG" />
+		
+		<result column="trial" jdbcType="INTEGER" property="trial" />
+		<result column="trialsuccess" jdbcType="INTEGER" property="trialSuccess" />
+		<result column="episode" jdbcType="INTEGER" property="episode" />
+		<result column="battle" jdbcType="INTEGER"	property="battle" />
+		<result column="superbattle" jdbcType="INTEGER" property="superBattle" />
+		<result column="survival" jdbcType="INTEGER" property="survival" />
+		<result column="raging" jdbcType="INTEGER" property="raging" />
+
+		<result column="bita" jdbcType="INTEGER" property="bita" />
+		<result column="bitasuccess" jdbcType="INTEGER" property="bitaSuccess" />
+		<result column="relief" jdbcType="INTEGER" property="relief" />
+		<result column="bigbita" jdbcType="INTEGER" property="bigBita" />
+		<result column="bigbitasuccessnum" jdbcType="INTEGER"	property="bigBitaSuccessNum" />
+		<result column="bigrelief" jdbcType="INTEGER"	property="bigRelief" />
+	</resultMap>
+
+<!--  
+
+
+	<resultMap id="KamaitachiYearMonthMap"
+		type="com.example.demo.entity.KamaitachiYearMonth">
+		<result column="year" jdbcType="VARCHAR" property="year" />
+		<result column="month" jdbcType="VARCHAR" property="month" />
+	</resultMap>
+
+
+
+	<resultMap id="KamaitachiMonthDataMap"
+		type="com.example.demo.entity.KamaitachiMonthData">
+		<result column="gamenum" jdbcType="INTEGER" property="gameNum" />
+		<result column="sbig" jdbcType="INTEGER" property="SBIG" />
+		<result column="big" jdbcType="INTEGER" property="BIG" />
+		<result column="reg" jdbcType="INTEGER" property="REG" />
+		<result column="beru" jdbcType="INTEGER" property="beru" />
+		<result column="suika" jdbcType="INTEGER" property="suika" />
+		<result column="cherry" jdbcType="INTEGER" property="cherry" />
+		<result column="ichimaiyakua" jdbcType="INTEGER"
+			property="ichimaiyakuA" />
+		<result column="ichimaiyakubc" jdbcType="INTEGER"
+			property="ichimaiyakuBC" />
+		<result column="even" jdbcType="INTEGER" property="even" />
+		<result column="odd" jdbcType="INTEGER" property="odd" />
+		<result column="silhouette" jdbcType="INTEGER"
+			property="silhouette" />
+		<result column="nomal" jdbcType="INTEGER" property="nomal" />
+		<result column="bitasuccessnum" jdbcType="INTEGER"
+			property="bitaSuccessNum" />
+		<result column="bitafailurenum" jdbcType="INTEGER"
+			property="bitaFailureNum" />
+		<result column="tenrakubitasuccessnum" jdbcType="INTEGER"
+			property="tenrakuBitaSuccessNum" />
+		<result column="tenrakubitafailurenum" jdbcType="INTEGER"
+			property="tenrakuBitaFailureNum" />
+		<result column="rtnum" jdbcType="INTEGER" property="rtNum" />
+	</resultMap>
+
+
+ -->
+
+
+
+
+	<!-- 新規登録 -->
+	<insert id="mahoikuInsert">
+		INSERT INTO mahoiku (year, month, day, frame,
+		totalgamenum, gamenum, artgamenum, SBIG, BIG, REG,
+		trial, trialSuccess, episode, battle, superbattle,
+		survival, raging, bita, bitasuccess, relief,
+		bigbita, bigbitasuccessnum, bigrelief)
+		VALUES (#{year}, #{month}, #{day}, #{frame},
+		#{totalGameNum}, #{gameNum}, #{artGameNum}, #{SBIG}, #{BIG}, #{REG},
+		#{trial}, #{trialSuccess}, #{episode}, #{battle}, #{superBattle},
+		#{survival}, #{raging}, #{bita}, #{bitaSuccess}, #{relief},
+		#{bigBita}, #{bigBitaSuccessNum}, #{bigRelief})
+	</insert>
+
+
+<!-- 一致・確認 -->
+	<select id="mahoikuInsertCheck" resultType="Integer">
+		SELECT count(*) FROM mahoiku
+		WHERE year = #{year} AND month = #{month} AND day = #{day} AND frame = #{frame}
+		AND totalgamenum = #{totalGameNum} AND gamenum = #{gameNum} AND artgamenum = #{artGameNum} AND sbig = #{SBIG} AND big = #{BIG} AND reg = #{REG}
+		AND trial = #{trial} AND trialSuccess = #{trialSuccess} AND episode = #{episode} AND battle = #{battle} AND superbattle = #{superBattle}
+		AND survival = #{survival} AND raging = #{raging} AND bita = #{bita} AND bitasuccess = #{bitaSuccess} AND relief = #{relief}
+		AND bigbita = #{bigBita} AND bigbitasuccessnum = #{bigBitaSuccessNum} AND bigrelief = #{bigRelief}			
+	</select>
+
+
+	<!-- 全取得 -->
+	<select id="mahoikuDateSelect" resultMap="MahoikuMap">
+		SELECT * FROM mahoiku
+	</select>
+	
+	<!-- 日データ取得 -->
+	<select id="mahoikuSelect" resultMap="MahoikuMap">
+		SELECT * FROM mahoiku WHERE mahoiku_id = #{mahoiku_id}
+	</select>
+	
+	<!-- 稼働データ削除 -->
+	<delete id="mahoikuDataDelete">
+		delete from mahoiku where mahoiku_id = #{mahoiku_id}
+	</delete>
+	
+	<!-- 年月取得 -->
+	<select id="mahoikuYearMonthSelect" resultMap="MahoikuMap">
+		SELECT year, month FROM mahoiku GROUP BY year, month
+	</select>
+	
+	<!-- 月データ取得 -->
+	<select id="mahoikuMonthDataSelect" resultMap="MahoikuMap">
+		SELECT SUM(totalGameNum) as totalgamenum, SUM(gameNum) as gamenum, SUM(artGameNum) as artgamenum, SUM(SBIG) as sbig, SUM(BIG) as big, SUM(REG) as reg, 
+			SUM(trial) as trial, SUM(trialSuccess) as trialsuccess, SUM(episode) as episode, SUM(battle) as battle, SUM(superBattle) superbattle, 
+			SUM(survival) as survival, SUM(raging) as raging, SUM(bita) as bita, SUM(bitaSuccess) as bitasuccess, SUM(relief) as relief, SUM(bigBita) as bigbita, SUM(bigBitaSuccessNum) as bigbitasuucessnum, SUM(bigRelief) as bigrelief
+		FROM mahoiku
+		WHERE  year = #{param1} AND month = #{param2}
+	</select>
+	
+	<!-- 月データ(枠色：赤)カウント取得 -->
+	<select id="akaikuMonthCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM mahoiku
+		WHERE  year = #{param1} AND month = #{param2} AND frame = '赤'
+		
+	</select>
+	
+	<!-- 月データ(枠色：赤)カウント取得 -->
+	<select id="aoikuMonthCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM mahoiku
+		WHERE  year = #{param1} AND month = #{param2} AND frame = '青'
+		
+	</select>
+	
+	
+	
+	
+	<!-- 月データ(枠色：赤)取得 -->
+	<select id="akaikuMonthDataSelect" resultMap="MahoikuMap">
+		SELECT SUM(totalGameNum) as totalgamenum, SUM(gameNum) as gamenum, SUM(artGameNum) as artgamenum, SUM(SBIG) as sbig, SUM(BIG) as big, SUM(REG) as reg, 
+			SUM(trial) as trial, SUM(trialSuccess) as trialsuccess, SUM(episode) as episode, SUM(battle) as battle, SUM(superBattle) superbattle, 
+			SUM(survival) as survival, SUM(raging) as raging, SUM(bita) as bita, SUM(bitaSuccess) as bitasuccess, SUM(relief) as relief, SUM(bigBita) as bigbita, SUM(bigBitaSuccessNum) as bigbitasuucessnum, SUM(bigRelief) as bigrelief
+		FROM mahoiku
+		WHERE  year = #{param1} AND month = #{param2} AND frame = '赤'
+	</select>
+	
+	<!-- 月データ(枠色：青)取得 -->
+	<select id="aoikuMonthDataSelect" resultMap="MahoikuMap">
+		SELECT SUM(totalGameNum) as totalgamenum, SUM(gameNum) as gamenum, SUM(artGameNum) as artgamenum, SUM(SBIG) as sbig, SUM(BIG) as big, SUM(REG) as reg, 
+			SUM(trial) as trial, SUM(trialSuccess) as trialsuccess, SUM(episode) as episode, SUM(battle) as battle, SUM(superBattle) superbattle, 
+			SUM(survival) as survival, SUM(raging) as raging, SUM(bita) as bita, SUM(bitaSuccess) as bitasuccess, SUM(relief) as relief, SUM(bigBita) as bigbita, SUM(bigBitaSuccessNum) as bigbitasuucessnum, SUM(bigRelief) as bigrelief
+		FROM mahoiku
+		WHERE  year = #{param1} AND month = #{param2} AND frame = '青'
+	</select>
+	
+	
+
+</mapper>
+

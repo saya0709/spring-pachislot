@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="head :: frag_body"></div>
+	<h1>魔法少女育成計画データ表示</h1>
+	
+	<h2>稼働日データ表示</h2>
+		
+        <form th:action="@{/mahoikuDataSelect}" method="post" th:object="${mahoikuDate}">
+        <select id="selectedId" name="selectedId">
+            <option value="00"></option>
+            <option
+                th:each="mahoikuDate : ${mahoikuDate}"
+                th:value="${mahoikuDate.mahoiku_id}"                 
+                th:text="|${mahoikuDate.year}-${mahoikuDate.month}-${mahoikuDate.day}|"
+                th:selected="${mahoikuDate.mahoiku_id} == selectedId" 
+             >
+            </option>
+        </select>
+        <button type="submit">送信</button>
+        </form>
+        
+        
+        <h2>稼働日データ削除</h2>
+		
+        <form th:action="@{/mahoikuDataDelete}" method="post" th:object="${mahoikuDate}">
+        <select id="selectedId" name="selectedId">
+            <option value="00"></option>
+            <option
+                th:each="mahoikuDate : ${mahoikuDate}"
+                th:value="${mahoikuDate.mahoiku_id}"                 
+                th:text="|${mahoikuDate.year}-${mahoikuDate.month}-${mahoikuDate.day}|"
+                th:selected="${mahoikuDate.mahoiku_id} == selectedId" 
+             >
+            </option>
+        </select>
+        <button type="submit">送信</button>
+        </form>
+        
+        
+        
+        <h2>稼働月データ表示</h2>
+        <h5>全データ(枠色無視)</h5>
+        <form th:action="@{/mahoikuYearMonthSelect}" method="post" th:object="${mahoikuYearMonthSelect}">
+        <select id="selectedId" name="selectedId">
+            <option value="00"></option>
+            <option
+                th:each="mahoikuDate : ${mahoikuYearMonthSelect}"
+                th:value="${mahoikuDate}"  
+                th:text="${mahoikuDate}"
+                th:selected="${mahoikuDate} == selectedId"              
+             >
+            </option>
+        </select>
+        <button type="submit">送信</button>
+        </form>
+        
+        <h5>全データ(赤枠)</h5>
+         <div th:if="${validationErrorRed}">
+		<label class="text-danger" th:text="${validationErrorRed}"></label>
+		</div>
+        <form th:action="@{/akaikuYearMonthSelect}" method="post" th:object="${mahoikuYearMonthSelect}">
+        <select id="selectedId" name="selectedId">
+            <option value="00"></option>
+            <option
+                th:each="mahoikuDate : ${mahoikuYearMonthSelect}"
+                th:value="${mahoikuDate}"  
+                th:text="${mahoikuDate}"
+                th:selected="${mahoikuDate} == selectedId"              
+             >
+            </option>
+        </select>
+        <button type="submit">送信</button>
+        </form>
+        
+        
+        <h5>全データ(青枠)</h5>
+        <div th:if="${validationErrorBlue}">
+		<label class="text-danger" th:text="${validationErrorBlue}"></label>
+		</div>
+        <form th:action="@{/aoikuYearMonthSelect}" method="post" th:object="${mahoikuYearMonthSelect}">
+        <select id="selectedId" name="selectedId">
+            <option value="00"></option>
+            <option
+                th:each="mahoikuDate : ${mahoikuYearMonthSelect}"
+                th:value="${mahoikuDate}"  
+                th:text="${mahoikuDate}"
+                th:selected="${mahoikuDate} == selectedId"              
+             >
+            </option>
+        </select>
+        <button type="submit">送信</button>
+        </form>
+        
+        
+        
+        
+        
+        
+         <br>
+        <button onclick="location.href='/mahoiku'" >戻る</button>
+		
+        
+     
+        
+	
+	
+	
+</body>
+</html>

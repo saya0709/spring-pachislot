@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head_fragment(title = 'top画面', scripts = ~{::script}, links = ~{::link})">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="head :: frag_body"></div>
+	<h1>まほいくCSV</h1>
+	
+	
+	<div th:if="${validationError}" th:each="error : ${validationError}">
+		<label class="text-danger" th:text="${error}"></label>
+	</div>
+	<div th:if="${validationError2}">
+		<label class="text-danger" th:text="${validationError2}"></label>
+	</div>
+	
+	
+		
+	<form th:action="@{/mahoiku/csvcreate}" th:object="${mahoikuCsv}" th:method="post">
+     
+      
+      <div class="form-group">
+        <label>ファイル名：</label>
+        <input type="text" th:field="*{date}" class="form-control">
+      </div>
+      
+      <br>
+      
+      
+      <div class="text-center">
+        <a href="/mahoiku/dataInsert" class="btn btn-secondary">キャンセル</a>
+        <input type="submit" value="　登録　" class="btn btn-primary">
+        
+      </div>
+      
+	</form>
+	
+	
+	
+</body>
+</html>
